@@ -7,10 +7,9 @@
 	$("#activityLevelPage").hide();
 	$("#goalsPage").hide();
 	$("#liftingLevelPage").hide();
-	$("#activityLevelPage").hide();
 	$("#eatingPage").hide();
-	//$("#healthPage").hide();
-	$("#loginPage").hide();
+	$("#healthPage").hide();
+	//$("#loginPage").hide();
 	
 	
 
@@ -27,7 +26,7 @@
 	
 	$("#registerButton").click(function(){
 		$("#registerDiv").css('margin-top', '1000px');
-		navigate("loginPage", "registerPage");
+		navigateColor("loginPage", "registerPage");
 		$("#registerDiv").animate({'margin-top': '50px'}, 500, 'swing');
 		
 	});
@@ -77,6 +76,17 @@
 	//---------------details page------------------------//
 //----------------------------------------------------------//
 	$("#detailsButton").click(function(){
+		var height;
+		var feetToInches;
+		var feet;
+		var inches;
+		feet = parseInt($("#feet").val());
+		
+		inches = parseInt($("#inches").val());
+	
+		feetToInches = feet * 12;
+		height = feet + feetToInches;
+		$("#txtHeight").val(height);
 		navigate("detailsPage", "healthPage");
 	});
 
@@ -146,6 +156,27 @@
 //-----------------------Activity Level ----------------//
 //----------------------------------------------------------//
 	$("#activityButton").click(function(){
+		
+		if($("#noActivity").is(':checked'))
+		{
+			$("#cardio").val(1);
+
+		}
+		else if($("#lightActivity").is(':checked'))
+		{
+			$("#cardio").val(2);
+
+		}
+		else if($("#moderateActivity").is(':checked'))
+		{
+			$("#cardio").val(3);
+
+		}
+		else if($("#highActivity").is(':checked'))
+		{
+			$("#cardio").val(4);
+
+		}
 		navigate("activityLevelPage","liftingLevelPage")
 		
 	});
@@ -154,15 +185,60 @@
 //-----------------------Lifting Level ----------------//
 //----------------------------------------------------------//
 	$("#levelButton").click(function(){
+		
+		if($("#level1").is(':checked'))
+		{
+			$("#level").val(1);
+
+		}
+		else if($("#level2").is(':checked'))
+		{
+			$("#level").val(2);
+
+		}
+		else if($("#level3").is(':checked'))
+		{
+			$("#level").val(3);
+
+		}
+		else if($("#level4").is(':checked'))
+		{
+			$("#level").val(4);
+
+		}
+	/*	
+		alert($("#txtPassword").val());
+				alert($("#txtEmail").val());
+		alert($("#ageDrop").val());
+				 alert($("#weightTxt").val());
+				 alert($("#txtHeight").val());
+				 alert($("#idlWeight").val());
+				 alert($("#injury").val());
+				 alert($("#focusArea").val());
+				 alert($("#normalMPD").val());
+				 alert($("#cook").val());
+				 alert($("#allergyOne").val());
+				 alert($("#allergyTwo").val());
+				 alert($("#allergyThree").val());
+				 alert($("#level").val());
+				 alert($("#cardio").val());
+		*/
 		register($("#txtPassword").val(),
 				 $("#txtEmail").val(),
 				 $("#ageDrop").val(),
 				 $("#weightTxt").val(),
-				 $("#heightTxt").val(),
+				 $("#txtHeight").val(),
 				 $("#idlWeight").val(),
+				 $("#injury").val(),
 				 $("#focusArea").val(),
 				 $("#normalMPD").val(),
-				 $("#cook").val());
+				 $("#cook").val(),
+				 $("#allergyOne").val(),
+				 $("#allergyTwo").val(),
+				 $("#allergyThree").val(),
+				 $("#level").val(),
+				 $("#cardio").val());
+				
 	});
 	
 //---------------Check if email is unique----------------///	
@@ -229,7 +305,15 @@ function login(email,password) {
 //------------Navigate to Register Page------------///
 function navigate(currentPage, pageDest)
 {
-/*	var circle = $("#circle");
+	
+	$("#" +  currentPage).hide();
+	$("#" + pageDest).show(200);
+	
+}
+//------------Navigate to Register Page------------///
+function navigateColor(currentPage, pageDest)
+{
+	var circle = $("#circle");
 	var w = window.innerWidth;
 	var h = window.innerHeight;
 	circle.animate({
@@ -249,16 +333,16 @@ function navigate(currentPage, pageDest)
 	});
 	
 	$("#circle").css('z-index','0');
-	*/
+	
 	
 	$("#" +  currentPage).hide();
-	$("#" + pageDest).show(200)
+	$("#" + pageDest).show(290);
 	
 }
 
 
 //----------Register function ----------------------------///
-function register(password,email) {
+function register(password,email,age,weight,height,idlWeight,injury,focusArea,normalMPD,cook,allergyOne,allergyTwo,allergyThree,level,cardio) {
 	
 		$.ajax({
 		    type: "Post",
@@ -274,7 +358,7 @@ function register(password,email) {
 		    	   $normalMPD: normalMPD,
 		    	   $cook: cook,
 		    	   $allergyOne: allergyOne,
-		    	   $allergyTwo: allergyTwo,
+		    	   $alleryTwo: allergyTwo,
 		    	   $allergyThree: allergyThree,
 		    	   $level: level,
 		    	   $cardio: cardio

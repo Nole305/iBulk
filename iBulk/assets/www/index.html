@@ -51,6 +51,9 @@
      	
      	<!----------------------------------------  Register Page ---------------------------------------->
     	<div id="registerPage">
+    	<div class="circle" id="circle">
+    	</div> 
+    	
     		<div data-role="content">    			
 			<article id="registerDiv" class="z1" style="overflow: visible;">
 	    		<div class="paper-shadow paper-shadow-bottom-z-1"></div>
@@ -75,8 +78,8 @@
     		</div>
     	
 <!----------------------------------------  Details Page ---------------------------------------->
-    	<div id="detailsPage">
-    		<div>
+    	<div id="detailsPage">   		
+    	<div>
     			<div id="detailsForm">
     			<h2>Tell me a few details about yourself to help me serve you better.</h2>
 					<label>Age:</label>
@@ -144,12 +147,12 @@
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>
-						<option value="4">5</option>
-						<option value="4">6</option>
-						<option value="4">7</option>
-						<option value="4">8</option>
-					</select>
-					<label style="float:left;"></label><select id="inches" name="inches">
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+					</select>	
+					<select id="inches" name="inches">
 						<option value="Inches">Inches</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -162,7 +165,16 @@
 						<option value="9">9</option>
 						<option value="10">10</option>
 						<option value="11">11</option>
+					</select></br>
+					<label>Do you have any injured Body Parts?</label></br>
+    				<select id="injury" name="injury">
+						<option value="fullBody">Full Body</option>
+						<option value="Arms">Arms</option>
+						<option value="Chest">Chest</option>
+						<option value="Shoulders">Shoulders</option>
+						<option value="Back">Back</option>
 					</select></div>
+					<input type="text" class="hiddenTxt" id="txtHeight">
 					<div id="detailsButton" class="button raised blue">
 	     				<div class="center" fit>Next</div>
 	      				<paper-ripple fit></paper-ripple>
@@ -209,9 +221,9 @@
     			<h1>Lets discuss some of your goals?</h1>
     			<div id="goalsForm">
     				<lable>What is your ideal weight?</lable></br>
-    				<input class="textField" id="idlWight" type="txt"></br>
+    				<input class="textField" id="idlWeight" type="txt"></br>
     				<label>Is there a certain body part you wish to focus on?</label>
-					<select id="bodyPartDrop" name="bodyPart">
+					<select id="focusArea" name="bodyPart">
 						<option value="fullBody">Full Body</option>
 						<option value="Arms">Arms</option>
 						<option value="Chest">Chest</option>
@@ -238,8 +250,9 @@
     				<lable>Do you like to cook?</lable></br>
     				<input class="textField" id="cook" type="txt"></br>
     				<lable>Do you have any allergies</lable></br>
-    				<input class="textField" type="txt"></br>
-    				
+    				<input class="textField" id="allergyOne" type="txt" value="none"></br>
+    				<input class="textField" id="allergyTwo" type="txt" value="none"></br>
+    				<input class="textField" id="allergyThree" type="txt" value="none"></br>
     			</div>
     		
     		</div>
@@ -254,14 +267,19 @@
     	<div id="activityLevelPage">
      		<div data-role="content">
   			<div>
-    				<input class="type="radio" name="activityRadio" id="noActivity" /> I never do cardio.
-    				<input type="radio" name="activityRadio" id="lightActivity" /> I barely do cardio.
-    				<input type="radio" name="activityRadio" id="moderateActivity" /> I do cardio a few times a week.
-    				<input type="radio" name="activityRadio" id="highActivity" /> I do cardio daily.
+    				<input class="radio" type="radio" name="activityRadio" id="noActivity" /><label>I never do cardio.</label></br>
+    				<input class="radio" type="radio" name="activityRadio" id="lightActivity" /><label>I barely do cardio.</label></br>
+    				<input class="radio" type="radio" name="activityRadio" id="moderateActivity" /><label>I do cardio a few times a week.</label></br>
+    				<input class="radio" type="radio" name="activityRadio" id="highActivity" /><label>I do cardio daily.</label></br>
 					<div id="activityButton" class="button raised blue">
 	     				<div class="center" fit>Next</div>
 	      				<paper-ripple fit></paper-ripple>
 	    			</div>
+	    			<input type="text" class="hiddenTxt" id="cardio" value="0">
+	    			
+	    			
+	    			
+	    			
     				
     		</div>
      		</div>
@@ -273,15 +291,18 @@
      		<div data-role="content">
   			<div>
   			<h2>What is your level of lifting expertise</h2>
-    				<input type="radio" name="activityRadio" id="noActivity" /> I have never lifted weights before.
-    				<input type="radio" name="activityRadio" id="lightActivity" /> I've lifted weights once or twice.
-    				<input type="radio" name="activityRadio" id="moderateActivity" /> I lift weights consistently but I'm not an expert.
-    				<input type="radio" name="activityRadio" id="highActivity" /> I'm practically a weight lifting coach!.
+    				<input class="radio" type="radio" name="levelRadio" id="level1" /><label>I have never lifted weights before.</label></br>
+    				<input class="radio" type="radio" name="levelRadio" id="level2" /><label>I've lifted weights once or twice.</label></br>
+    				<input class="radio" type="radio" name="levelRadio" id="level3" /><label>I lift weights consistently but I'm not an expert.</label></br>
+    				<input class="radio" type="radio" name="levelRadio" id="level4" /><label>I'm practically a weight lifting coach!.</label></br>
 					<div id="levelButton" class="button raised blue">
 	     				<div class="center" fit>Register</div>
 	      				<paper-ripple fit></paper-ripple>
 	    			</div>
-    				
+    				<input type="text" class="hiddenTxt" id="level" value="0">
+	    		
+	    			
+	    			
     		</div>
      		</div>
      	</div>
