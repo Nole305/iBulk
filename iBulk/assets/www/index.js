@@ -206,7 +206,7 @@
 			$("#level").val(4);
 
 		}
-	/*	
+	
 		alert($("#txtPassword").val());
 				alert($("#txtEmail").val());
 		alert($("#ageDrop").val());
@@ -222,7 +222,7 @@
 				 alert($("#allergyThree").val());
 				 alert($("#level").val());
 				 alert($("#cardio").val());
-		*/
+		
 		register($("#txtPassword").val(),
 				 $("#txtEmail").val(),
 				 $("#ageDrop").val(),
@@ -240,6 +240,154 @@
 				 $("#cardio").val());
 				
 	});
+	
+//----------------------------------------------------------//
+//----------------------- workout page  ----------------//
+//----------------------------------------------------------//	
+	$("#workoutContent").scroll(function(){
+		$('.workoutTabs').css( "box-shadow", "0 0 6px 0" );
+		
+		var pos = $("#workoutContent").scrollTop();
+		if(pos==0)
+			{
+				$('.workoutTabs').css("box-shadow","0 0 0px 0");
+			}
+		
+	});
+	$("#blue4").click(function(){
+		alert("action");
+		$("#blue2").animate({
+		
+		marginLeft: "1em"
+			
+		}, 400,function()
+		{
+		});
+		
+		$("#blue3").animate({
+			
+			marginLeft: "7em"
+				
+			}, 400,function()
+			{
+			});
+		
+		$("#blue4").animate({
+			
+			marginLeft: "13em",
+			content:"<"
+				
+			}, 400,function()
+			{
+			});
+	});
+
+	$("#firstTab").click(function(){
+		$("#ubar").animate({"margin-left":"40px"},50);
+	});
+	
+	$("#secondTab").click(function(){
+		$("#ubar").animate({"margin-left":"130px"},50);
+	});
+	
+	$("#thirdTab").click(function(){
+		$("#ubar").animate({"margin-left":"220px"},50);
+	});
+	
+	$("#view1").on('click', function(){
+		  $(".workoutHead").animate({"opacity":"0"},200);
+		  $("#workoutContent").animate({
+			  "margin-top":"10px"
+		  },300);
+		  $("li").animate({"height":"670px"});
+		  $("#buttonGroup").animate({"opacity":"0"},200);
+		  $("#workoutContent").css("position","absolute");
+		  $("#exLbl1").animate({"top": "0px !important;",
+		  "position": "absolute"},200);
+		  $("#exLbl1").removeClass(".exName");
+		  $(".exName").animate({"opacity":"0"},200);
+		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
+		  
+		});
+	
+	$("#view2").on('click', function(){
+		  $(".workoutHead").animate({"opacity":"0"},200);
+		  $("#workoutContent").animate({
+			  "margin-top":"10px"
+		  },300);
+		  $("li").animate({"height":"670px"});
+		  $("#buttonGroup").animate({"opacity":"0"},200);
+		  $("#workoutContent").css("position","absolute");
+		  $("#exLbl2").animate({"top": "0px !important;",
+			  "position": "absolute"},200);
+		  $("#exLbl2").removeClass(".exName");
+		  $(".exName").animate({"opacity":"0"},200);
+		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
+		  
+		});
+	
+	$("#view3").on('click', function(){
+		  $(".workoutHead").animate({"opacity":"0"},200);
+		  $("#workoutContent").animate({
+			  "margin-top":"10px"
+		  },300);
+		  $("li").animate({"height":"670px"});
+		  $("#buttonGroup").animate({"opacity":"0"},200);
+		  $("#workoutContent").css("position","absolute");
+		  $("#exLbl3").animate({"top": "0px !important;",
+			  "position": "absolute"},200);
+		  $("#exLbl3").removeClass(".exName");
+		  $(".exName").animate({"opacity":"0"},200);
+		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
+		  
+		});
+	
+	$("#view4").on('click', function(){
+		  $(".workoutHead").animate({"opacity":"0"},200);
+		  $("#workoutContent").animate({
+			  "margin-top":"10px"
+		  },300);
+		  $("li").animate({"height":"670px"});
+		  $("#buttonGroup").animate({"opacity":"0"},200);
+		  $("#workoutContent").css("position","absolute");
+		  $("#exLbl4").animate({"top": "0px !important;",
+			  "position": "absolute"},200);
+		  $("#exLbl4").removeClass(".exName");
+		  $(".exName").animate({"opacity":"0"},200);
+		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
+		  
+		});
+	
+	$("#view5").on('click', function(){
+		  $(".workoutHead").animate({"opacity":"0"},200);
+		  $("#workoutContent").animate({
+			  "margin-top":"10px"
+		  },300);
+		  $("li").animate({"height":"670px"});
+		  $("#buttonGroup").animate({"opacity":"0"},200);
+		  $("#workoutContent").css("position","absolute");
+		  $(".exName").animate({"opacity":"0"},200);
+		  $("#exLbl5").animate({"top": "62px !important",
+			  "opacity": "1 !important",
+			  "position": "absolute"},200);
+		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
+		});
+		
+	$("#back").click(function(){
+		$(".workoutHead").animate({"opacity":"1"},200);
+		  $("#workoutContent").animate({
+			  "margin-top":"40px"
+		  },300);
+		  $("li").animate({"height":"121px"});
+		  $("#buttonGroup").animate({"opacity":"1"},200);
+		  $("#workoutContent").css("position","relative");
+		  $(".exName").animate({"opacity":"1"},200);
+		 
+		  $(".icon-arrow-left").animate({"opacity":"0"},200);
+		
+	});
+	
+	
 	
 //---------------Check if email is unique----------------///	
 	function checkEmail(email) {	
