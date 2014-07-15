@@ -367,30 +367,47 @@
 		  $("#buttonGroup").animate({"opacity":"0"},200);
 		  $("#workoutContent").css("position","absolute");
 		  $(".exName").animate({"opacity":"0"},200);
-		  $("#exLbl5").animate({"top": "62px !important",
-			  "opacity": "1 !important",
-			  "position": "absolute"},200);
 		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
 		});
 		
 	$("#back").click(function(){
-		$(".workoutHead").animate({"opacity":"1"},200);
+		$(".workoutHead").animate({"opacity":"1"},300);
 		  $("#workoutContent").animate({
 			  "margin-top":"40px"
 		  },300);
 		  $("li").animate({"height":"121px"});
-		  $("#buttonGroup").animate({"opacity":"1"},200);
-		  $("#workoutContent").css("position","relative");
-		  $(".exName").animate({"opacity":"1"},200);
-		 
-		  $(".icon-arrow-left").animate({"opacity":"0"},200);
+		  $("#buttonGroup").animate({"opacity":"1"},300);
+		  $("#workoutContent").css("position","fixed");
+		  $(".exName").animate({"opacity":"1"},300);
+		  $(".workoutNav").css("display","inline");
+		  $(".icon-arrow-left").animate({"opacity":"0"},300);
+		  $("#workoutContent").animate({"height":"118% !important"}, 300);
 		
 	});
 	
+	function getProfile(username,password) {
+		$.ajax({
+		    type: "Post",
+		    datatype: "json",
+		    url: "http://www.tremainegrant.com/Pickle/main.php",
+		    data: {action: 'getProfile', $username: username },
+		    crossDomain: true,
+		    success: function (response,status) {
+		    	var loggedUser = User(JSON.parse(response));
+		    	$.data(document.body, "loggedUser", loggedUser);
+		    	localStorage.UserName = username;
+		    	localStorage.Password = password;
+		    	$.mobile.changePage('#mainPage', {changeHash: false});
+		    },
+		    error: function (response) {
+		         alert("Error establishing a connection.");
+		    }
+	    });
+	}
 	
 	
 //---------------Check if email is unique----------------///	
-	function checkEmail(email) {	
+	function getExercise(email) {	
 		$.ajax({
 		    type: "Post",
 		    url: "http://www.tremainegrant.com/iBulk/bulk.php",
@@ -433,7 +450,8 @@ function login(email,password) {
 	    crossDomain: true,
 	    success: function (response,status) {
 	    	if (response.toString().indexOf("match") >= 0) {
-	    		navigate("loginPage", "welcomePage");
+	    		alert("logged in");
+	    		window.location = "workout.html"; 
 	    		
 	    	}
 	    	else {
