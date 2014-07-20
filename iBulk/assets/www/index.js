@@ -7,18 +7,17 @@
 	$("#activityLevelPage").hide();
 	$("#goalsPage").hide();
 	$("#liftingLevelPage").hide();
-	$("#eatingPage").hide();
 	$("#healthPage").hide();
 	//$("#loginPage").hide();
 	
-	
+
 
 //-------------------------------------------------------//
 //-- ONCLICK(loginButton)                            //
 //-----------------------------------------------------//
 		
 		$("#loginButton").click(function(){
-			login($("#logUsername").val(), $("#logPassword").val());
+			login($("#logUsername").val(),$("#logPassword").val());
 		});
 //-------------------------------------------------------//
 //-- ONCLICK(RegisterButton)                            //
@@ -26,7 +25,7 @@
 	
 	$("#registerButton").click(function(){
 		$("#registerDiv").css('margin-top', '1000px');
-		navigateColor("loginPage", "registerPage");
+		navigate("loginPage", "registerPage");
 		$("#registerDiv").animate({'margin-top': '50px'}, 500, 'swing');
 		
 	});
@@ -41,34 +40,10 @@
 			}
 		else
 			{
-				if(checkEmail($("#txtEmail").val()))
-				{
-					alert("Email is already taken")
-				}
-				else
-				{
-					
-					if(matchPasswords($("#txtPassword").val(),$("#confirmPassword").val()))
-					{
-						
-						if($("#termCheck").prop("checked"))
-							{
-								
-								navigate("registerPage","detailsPage");
-							}
-						else
-							{
-								alert("Please Accept the terms and conditions to continue");
-							}
-						
-					}
-					else
-					{
-						alert("Passwords do not match");
-					}
-				}
+				checkEmail($("#txtEmail").val());
 			}
-			
+		
+					
 		
 	});
 	
@@ -141,16 +116,9 @@
 //----------------------------------------------------------//
 
 	$("#goalsButton").click(function(){
-		navigate("goalsPage","eatingPage")
+		navigate("goalsPage","activityLevelPage")
 	})
 	
-	
-//----------------------------------------------------------//
-//-----------------------eating habits----------------//
-//----------------------------------------------------------//
-	$("#eatingButton").click(function(){
-		navigate("eatingPage","activityLevelPage")
-	});
 
 //----------------------------------------------------------//
 //-----------------------Activity Level ----------------//
@@ -159,22 +127,22 @@
 		
 		if($("#noActivity").is(':checked'))
 		{
-			$("#cardio").val(1);
+			$("#cardio").val('1');
 
 		}
 		else if($("#lightActivity").is(':checked'))
 		{
-			$("#cardio").val(2);
+			$("#cardio").val('2');
 
 		}
 		else if($("#moderateActivity").is(':checked'))
 		{
-			$("#cardio").val(3);
+			$("#cardio").val('3');
 
 		}
 		else if($("#highActivity").is(':checked'))
 		{
-			$("#cardio").val(4);
+			$("#cardio").val('4');
 
 		}
 		navigate("activityLevelPage","liftingLevelPage")
@@ -188,40 +156,34 @@
 		
 		if($("#level1").is(':checked'))
 		{
-			$("#level").val(1);
+			$("#level").val('1');
 
 		}
 		else if($("#level2").is(':checked'))
 		{
-			$("#level").val(2);
+			$("#level").val('2');
 
 		}
 		else if($("#level3").is(':checked'))
 		{
-			$("#level").val(3);
+			$("#level").val('3');
 
 		}
 		else if($("#level4").is(':checked'))
 		{
-			$("#level").val(4);
+			$("#level").val('4');
 
 		}
 	
-		alert($("#txtPassword").val());
+				alert($("#txtPassword").val());
 				alert($("#txtEmail").val());
-		alert($("#ageDrop").val());
-				 alert($("#weightTxt").val());
-				 alert($("#txtHeight").val());
-				 alert($("#idlWeight").val());
-				 alert($("#injury").val());
-				 alert($("#focusArea").val());
-				 alert($("#normalMPD").val());
-				 alert($("#cook").val());
-				 alert($("#allergyOne").val());
-				 alert($("#allergyTwo").val());
-				 alert($("#allergyThree").val());
-				 alert($("#level").val());
-				 alert($("#cardio").val());
+				alert($("#ageDrop").val());
+				alert($("#weightTxt").val());
+				alert($("#txtHeight").val());
+				alert($("#idlWeight").val());
+				alert($("#focusArea").val());
+				alert($("#level").val());
+				alert($("#cardio").val());
 		
 		register($("#txtPassword").val(),
 				 $("#txtEmail").val(),
@@ -229,216 +191,78 @@
 				 $("#weightTxt").val(),
 				 $("#txtHeight").val(),
 				 $("#idlWeight").val(),
-				 $("#injury").val(),
 				 $("#focusArea").val(),
-				 $("#normalMPD").val(),
-				 $("#cook").val(),
-				 $("#allergyOne").val(),
-				 $("#allergyTwo").val(),
-				 $("#allergyThree").val(),
 				 $("#level").val(),
 				 $("#cardio").val());
 				
 	});
 	
-//----------------------------------------------------------//
-//----------------------- workout page  ----------------//
-//----------------------------------------------------------//	
-	$("#workoutContent").scroll(function(){
-		$('.workoutTabs').css( "box-shadow", "0 0 6px 0" );
-		
-		var pos = $("#workoutContent").scrollTop();
-		if(pos==0)
-			{
-				$('.workoutTabs').css("box-shadow","0 0 0px 0");
-			}
-		
-	});
-	$("#blue4").click(function(){
-		alert("action");
-		$("#blue2").animate({
-		
-		marginLeft: "1em"
-			
-		}, 400,function()
-		{
-		});
-		
-		$("#blue3").animate({
-			
-			marginLeft: "7em"
-				
-			}, 400,function()
-			{
-			});
-		
-		$("#blue4").animate({
-			
-			marginLeft: "13em",
-			content:"<"
-				
-			}, 400,function()
-			{
-			});
-	});
 
-	$("#firstTab").click(function(){
-		$("#ubar").animate({"margin-left":"40px"},50);
-	});
 	
-	$("#secondTab").click(function(){
-		$("#ubar").animate({"margin-left":"130px"},50);
-	});
-	
-	$("#thirdTab").click(function(){
-		$("#ubar").animate({"margin-left":"220px"},50);
-	});
-	
-	$("#view1").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $("#exLbl1").animate({"top": "0px !important;",
-		  "position": "absolute"},200);
-		  $("#exLbl1").removeClass(".exName");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		  
-		});
-	
-	$("#view2").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $("#exLbl2").animate({"top": "0px !important;",
-			  "position": "absolute"},200);
-		  $("#exLbl2").removeClass(".exName");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		  
-		});
-	
-	$("#view3").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $("#exLbl3").animate({"top": "0px !important;",
-			  "position": "absolute"},200);
-		  $("#exLbl3").removeClass(".exName");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		  
-		});
-	
-	$("#view4").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $("#exLbl4").animate({"top": "0px !important;",
-			  "position": "absolute"},200);
-		  $("#exLbl4").removeClass(".exName");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		  
-		});
-	
-	$("#view5").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		});
-		
-	$("#back").click(function(){
-		$(".workoutHead").animate({"opacity":"1"},300);
-		  $("#workoutContent").animate({
-			  "margin-top":"40px"
-		  },300);
-		  $("li").animate({"height":"121px"});
-		  $("#buttonGroup").animate({"opacity":"1"},300);
-		  $("#workoutContent").css("position","fixed");
-		  $(".exName").animate({"opacity":"1"},300);
-		  $(".workoutNav").css("display","inline");
-		  $(".icon-arrow-left").animate({"opacity":"0"},300);
-		  $("#workoutContent").animate({"height":"118% !important"}, 300);
-		
-	});
-	
-	function getProfile(username,password) {
+//---------------Check if email is unique----------------///	
+function getLevel(email) {
 		$.ajax({
 		    type: "Post",
 		    datatype: "json",
-		    url: "http://www.tremainegrant.com/Pickle/main.php",
-		    data: {action: 'getProfile', $username: username },
+		    url: "http://www.tremainegrant.com/iBulk/bulk.php",
+		    data: {action: 'getUserLevel', $email: email },
 		    crossDomain: true,
 		    success: function (response,status) {
-		    	var loggedUser = User(JSON.parse(response));
-		    	$.data(document.body, "loggedUser", loggedUser);
-		    	localStorage.UserName = username;
-		    	localStorage.Password = password;
-		    	$.mobile.changePage('#mainPage', {changeHash: false});
+		    	
+		    	var obj = JSON.parse(response);
+		    	getExercise(obj.level,obj.phase);
+		    	
 		    },
 		    error: function (response) {
 		         alert("Error establishing a connection.");
 		    }
 	    });
 	}
-	
-	
-//---------------Check if email is unique----------------///	
-	function getExercise(email) {	
-		$.ajax({
-		    type: "Post",
-		    url: "http://www.tremainegrant.com/iBulk/bulk.php",
-		    data: {action: 'checkEmail', $email: email},
-		    crossDomain: true,
-		    success: function (response,status) {
-		    	if (response.toString().indexOf("taken") >= 0) {
-		    		return false;
-		    	}
-		    	else {
-		    		return true;
-		    	}
-		    },
-		    error: function (response) {
-		         alert("issue");
-		    }
-	    });
-	}	
 
-	
-function matchPasswords(original, confirmed){
-	    alert("checking match");
-	   
-		if (original == confirmed){
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+//---------------Check if email is unique----------------///
 
+
+function checkEmail(email) {
+	$.ajax({
+	    type: 'Post',
+	    datatype: "json",
+	    url: "http://www.tremainegrant.com/iBulk/bulk.php",
+	    data: {action: 'checkEmail', $email: email},
+	    crossDomain: true,
+	    success: function (response,status) {
+	    	if(response.toString().indexOf("taken") >= 0){
+					$("#taken").animate({"opacity":"1"});
+				}
+				else
+				{
+					
+					if($("#txtPassword").val()==$("#confirmPassword").val())
+					{
+						
+						if($("#termCheck").prop("checked"))
+							{
+								
+								navigate("registerPage","detailsPage");
+							}
+						else
+							{
+								alert("Please Accept the terms and conditions to continue");
+							}
+						
+					}
+					else
+					{
+						alert("Passwords do not match");
+					}
+				}
+	    
+	    	
+	    },
+	    error: function (xhr) {
+	        alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+	    }
+    });
+}
 
 
 //--------------------Login ---------------------///
@@ -450,7 +274,7 @@ function login(email,password) {
 	    crossDomain: true,
 	    success: function (response,status) {
 	    	if (response.toString().indexOf("match") >= 0) {
-	    		alert("logged in");
+	    		localStorage["loggedUser"] = $('#logUsername').val();
 	    		window.location = "workout.html"; 
 	    		
 	    	}
@@ -461,14 +285,13 @@ function login(email,password) {
 	    },
 	    error: function (response) {
 	         alert("Error establishing a connection.");
+	         
 	    }
-	   
     });
 	
-	alert(success);
 }
 
-//------------Navigate to Register Page------------///
+//------------Navigate to another Page------------///
 function navigate(currentPage, pageDest)
 {
 	
@@ -476,7 +299,7 @@ function navigate(currentPage, pageDest)
 	$("#" + pageDest).show(200);
 	
 }
-//------------Navigate to Register Page------------///
+//------------Navigate to another Page with circle animation------------///
 function navigateColor(currentPage, pageDest)
 {
 	var circle = $("#circle");
@@ -508,7 +331,7 @@ function navigateColor(currentPage, pageDest)
 
 
 //----------Register function ----------------------------///
-function register(password,email,age,weight,height,idlWeight,injury,focusArea,normalMPD,cook,allergyOne,allergyTwo,allergyThree,level,cardio) {
+function register(password,email,age,weight,height,idlWeight,focusArea,level,cardio) {
 	
 		$.ajax({
 		    type: "Post",
@@ -519,13 +342,7 @@ function register(password,email,age,weight,height,idlWeight,injury,focusArea,no
 		    	   $weight: weight,
 		    	   $height: height,
 		    	   $idlWeight: idlWeight,
-		    	   $injury: injury,
 		    	   $focusArea: focusArea,
-		    	   $normalMPD: normalMPD,
-		    	   $cook: cook,
-		    	   $allergyOne: allergyOne,
-		    	   $alleryTwo: allergyTwo,
-		    	   $allergyThree: allergyThree,
 		    	   $level: level,
 		    	   $cardio: cardio
 		    	   },

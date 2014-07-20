@@ -51,8 +51,7 @@
      	
      	<!----------------------------------------  Register Page ---------------------------------------->
     	<div id="registerPage">
-    	<div class="circle" id="circle">
-    	</div> 
+    	
     	
     		<div data-role="content">    			
 			<article id="registerDiv" class="z1" style="overflow: visible;">
@@ -73,6 +72,8 @@
 	    		</div>
 	    		<div class="paper-shadow paper-shadow-bottom-z-1"></div>
   			</article>
+  			<div id="taken"><h3>That email is already in use.</h3></div>
+  			
 					
 			</div>		
     		</div>
@@ -166,14 +167,6 @@
 						<option value="10">10</option>
 						<option value="11">11</option>
 					</select></br>
-					<label>Do you have any injured Body Parts?</label></br>
-    				<select id="injury" name="injury">
-						<option value="fullBody">Full Body</option>
-						<option value="Arms">Arms</option>
-						<option value="Chest">Chest</option>
-						<option value="Shoulders">Shoulders</option>
-						<option value="Back">Back</option>
-					</select></div>
 					<input type="text" class="hiddenTxt" id="txtHeight">
 					<div id="detailsButton" class="button raised blue">
 	     				<div class="center" fit>Next</div>
@@ -181,6 +174,7 @@
 	    			</div>
 				</div>
     		</div>
+    	</div>
     	</div>
     	
      <!----------------------------------------  Health Page ---------------------------------------->
@@ -236,31 +230,9 @@
 				<div id="goalsButton" class="button raised blue">
 	     				<div class="center" fit>Next</div>
 	      				<paper-ripple fit></paper-ripple>
-	    			</div>
+	    		</div>
     	</div>
     	
- <!----------------------------------------  Eating Page ---------------------------------------->
-    	
-    	<div id="eatingPage">
-    		<div data-role="content">
-    			<h1>Lets discuss your eating habits?</h1>
-    			<div id="goalsForm">
-    				<lable>How many meals a day do you currently eat daily?</lable></br>
-    				<input class="textField" id="normalMPD" type="txt"></br>
-    				<lable>Do you like to cook?</lable></br>
-    				<input class="textField" id="cook" type="txt"></br>
-    				<lable>Do you have any allergies</lable></br>
-    				<input class="textField" id="allergyOne" type="txt" value="none"></br>
-    				<input class="textField" id="allergyTwo" type="txt" value="none"></br>
-    				<input class="textField" id="allergyThree" type="txt" value="none"></br>
-    			</div>
-    		
-    		</div>
-				<div id="eatingButton" class="button raised blue">
-	     				<div class="center" fit>Next</div>
-	      				<paper-ripple fit></paper-ripple>
-	    			</div>
-    	</div>
     	
 <!----------------------------------------  Activity Page ---------------------------------------->
     	

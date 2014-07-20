@@ -85,6 +85,10 @@ ui-loader
 	margin: 0 auto;
 	width: 201px;
 }
+#taken
+{
+	opacity:0;
+}
 #registerDiv{
 	margin-top: 50px;
 }

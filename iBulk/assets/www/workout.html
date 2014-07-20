@@ -13,57 +13,47 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
     </head>
     <body id="workoutBody">
-    <div id="workoutPage">
-    		<div class="workoutHead">
-    			<h2 id="workoutOverviewTitle">WorkOut Overview</h2>
-    			<label id="currentDate">11/23/1991</label>
-    			<ul id="workoutTabs">
-	    		 <li id="firstTab" class="workoutNav"><a href="#first" class="tab">Chest</a></li>
-	      		 <li id="secondTab" class="workoutNav"><a href="#second" class="tab">Calfs</a></li>
-	      		 <li id="thirdTab" class="workoutNav"><a href="#third" class="tab">Abs</a></li>
-	    		</ul>
-	    		<div id="ubar"></div>
-    		</div>
+	    <div id="workoutPage">
+	    		<div class="workoutHead">
+	    			<h2 id="workoutOverviewTitle">Today's Workout</h2>
+	    			<ul id="workoutTabs">
+		    		 <li id="firstTab" class="workoutNav"><a href="#first" class="tab">Upper</a></li>
+		      		 <li id="secondTab" class="workoutNav"><a href="#second" class="tab">Lower</a></li>
+		      		 <li id="thirdTab" class="workoutNav"><a href="#third" class="tab">Abs</a></li>
+		    		</ul>
+		    		<div id="ubar"></div>
+	    		</div>
+	    		
+	    		<div id="upper">
+	    		   <div class="list-view">		
+				    <ul class="workoutList" id="upperList">
+				    <i id="back" class="icon-arrow-left"></i>
+				    </ul>
+				    </div>
+	    		 	<div id="buttonGroup">
+	    		 	<div id="blue" class="paper-button btn-next" style="margin:25em 19em" ></div>
+	    		 	<div id="blue2" class="paper-button btn-next" style="margin:25em 19em" ></div>
+	    		 	<div id="blue3" class="paper-button btn-next" style="margin:25em 19em" ></div>
+	    		 	<div id="blue4" class="paper-button btn-next" style="margin:25em 19em" ></div>
+	    		 	</div>
+	    
+	    		</div>  
+	    			
+	    		<div class="workoutList" id="lower">
+	    		   <div class="list-view">		
+				    <ul class="workoutList" id="lowerList">
+				    </ul>
+				    </div>
+	    		</div>  
+	    		
+	    		<div class="workoutList" id="core">
+	    		   <div class="list-view">		
+				    <ul class="workoutList" id="coreList">
+				    </ul>
+				    </div>
+	    		</div>  		
+		</div>		
     		
-    		<div id="workoutContent">
-    		   <div id="list-view">		
-			    <ul class="workoutList">
-			      <li class="workoutCards">
-				  <i id="back" class="icon-arrow-left"></i>
-			      <label id="exLbl1" class="exName">Bench Press</label>
-			      <i id="view1" class="icon-plus icon-3"></i>
-			      </li>
-			      <li class="workoutCards">
-			      <label id="exLbl2" class="exName">Bench Press</label>
-			      <i id="view2" class="icon-plus icon-3"></i>
-			      </li>
-			      <li class="workoutCards">
-			      <label id="exLbl3" class="exName">Bench Press</label>
-			      <i id="view3" class="icon-plus icon-3"></i>
-			      </li>
-			      <li class="workoutCards">
-			      <label id="exLbl4" class="exName">Bench Press</label>
-			      <i id="view4" class="icon-plus icon-3"></i>
-			      </li>
-			      <li class="workoutCards">
-			      <label id="exLbl5" class="exName">Bench Press</label>
-			      <i id="view5" class="icon-plus icon-3"></i>
-			      </li>
-			      <li class="workoutCards">
-			      <label id="exLbl5" class="exName">Bench Press</label>
-			      <i id="view6" class="icon-plus icon-3"></i>
-			      </li>
-			    </ul>
-			    </div>
-    		 	<div id="buttonGroup">
-    		 	<div id="blue" class="paper-button btn-next" style="margin:25em 19em" ></div>
-    		 	<div id="blue2" class="paper-button btn-next" style="margin:25em 19em" ></div>
-    		 	<div id="blue3" class="paper-button btn-next" style="margin:25em 19em" ></div>
-    		 	<div id="blue4" class="paper-button btn-next" style="margin:25em 19em" ></div>
-    		 	</div>
-    		</div>  			
-	</div>		
-    		
-    <script src="index.js"></script>
+    <script src="workouts.js"></script>
     </body>
 </html>
