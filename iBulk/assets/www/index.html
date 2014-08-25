@@ -6,7 +6,7 @@
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        
+  		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" href="css/app.css" />
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
@@ -276,6 +276,58 @@
 	    			
 	    			
     		</div>
+     		</div>
+     	</div>
+     	
+     		
+     	<div id="welcomePage">
+     		<div class="circle" id="circleTutorial"></div> 
+     		<div data-role="content">
+  			<div class="tutorialScreenView" id="screen1">
+  			<h1>Welcome To iBulk!</h1>
+  			</div>
+  			<div class="tutorialScreenView" id="screen2">
+  			<h1>screen2</h1>
+  			</div>
+  			<div class="tutorialScreenView" id="screen3">
+  			<h1>screen 3</h1>
+  			</div>
+  			<div class="tutorialScreenView" id="screen4">
+  			<h1>screen 4</h1>
+  			</div>
+  			<div class="tutorialScreenView" id="screen5">
+  			<h1>Create a schedule</h1>
+  			<div id="liftingDaysSchd" class="button raised blue">
+	     				<div class="center" fit>Lifting Schedule</div>
+	      				<paper-ripple fit></paper-ripple>
+	    	</div>
+	    	<div>
+	    		
+	    	</div>
+	    	<div id="mealPlanSchd" class="button raised blue">
+	     				<div class="center" fit>Set Up Meal Plan</div>
+	      				<paper-ripple fit></paper-ripple>
+	    	</div>
+  			</div>
+  			<div class="tutorialScreenView" id="screen6">
+  			<h1>screen 6</h1>
+  			<div id="getStarted" class="button raised blue">
+	     				<div class="center" fit>Get Started</div>
+	      				<paper-ripple fit></paper-ripple>
+	    	</div>
+  			</div>
+    		<div id="pageIndicators">
+    			<div id="arrowLeft" class="arrow"><label style="color:black"><</label></div>
+    			<form id="indicatorGroup">
+				<input type="radio" name="welcome" value='1' id="page1" class="indicatorDots">
+				<input type="radio" name="welcome" value='2' id="page2" class="indicatorDots">
+				<input type="radio" name="welcome" value='3' id="page3" class="indicatorDots">
+				<input type="radio" name="welcome" value='4' id="page4" class="indicatorDots">
+				<input type="radio" name="welcome" value='5' id="page5" class="indicatorDots">
+				<input type="radio" name="welcome" value='6' id="page6" class="indicatorDots">
+				</form>
+				<div id="arrowRight" class="arrow"><label style="color:black">></label></div>
+			</div>
      		</div>
      	</div>
     	
