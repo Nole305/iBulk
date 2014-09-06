@@ -15,6 +15,7 @@ var Weight = Parse.Object.extend("Weight");
 var weightId;
 var weight = new Weight();
 var startCounter;
+var currentDetailID;
 
 
 
@@ -33,7 +34,7 @@ getLevel(current.get("username"));
 
 $(".menu").click(function()
 {
-	$("#menuScreen").animate({"top":"109px"},200);
+	$("#menuScreen").animate({"top":"85%"},200);
 	$("#menuIcon").animate({"height":"0px"},200);
 	$("#arrowIcon").animate({"height":"25px"},200);
 });
@@ -50,7 +51,7 @@ $(".arrowIcon").click(function()
 	else
 	{
 		$("#workoutOverviewTitle").text("Today's Workout");
-		$("#menuScreen").animate({"top":"709px"},200);
+		$("#menuScreen").animate({"top":"100%"},200);
 		$("#menuIcon").animate({"height":"25px"},200);
 		$("#arrowIcon").animate({"height":"0px"},200);
 	}
@@ -107,17 +108,18 @@ $("#core").css("opacity","0");
 				{
 					weight.set("wght_user", username);
 					weight.set("wght_exercise", nameList[nameCount]);
-									
-					
 					weight.set("wght_recommended", weightNum);
-					weight.save();
-					weightId=results[0].id;
+					weight.save().then(function(weight){
+						weightId=weight.id;
+					});
 
+						
+					
 				}
 				else
 				{			
 					weightId=results[0].id;
-					weight.save();
+					//weight.save();
 				}	
 
 			  },
@@ -162,82 +164,6 @@ $("#core").css("opacity","0");
 	$("#thirdTab").click(function(){
 		$("#ubar").animate({"margin-left":"180px"},50);
 	});
-	
-	$("#view1").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $("#exLbl1").animate({"top": "0px !important;",
-		  "position": "absolute"},200);
-		  $("#exLbl1").removeClass(".exName");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		  
-		});
-	
-	$("#view2").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $("#exLbl2").animate({"top": "0px !important;",
-			  "position": "absolute"},200);
-		  $("#exLbl2").removeClass(".exName");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		  
-		});
-	
-	$("#view3").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $("#exLbl3").animate({"top": "0px !important;",
-			  "position": "absolute"},200);
-		  $("#exLbl3").removeClass(".exName");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		  
-		});
-	
-	$("#view4").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $("#exLbl4").animate({"top": "0px !important;",
-			  "position": "absolute"},200);
-		  $("#exLbl4").removeClass(".exName");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		  
-		});
-	
-	$("#view5").on('click', function(){
-		  $(".workoutHead").animate({"opacity":"0"},200);
-		  $("#workoutContent").animate({
-			  "margin-top":"10px"
-		  },300);
-		  $("li").animate({"height":"670px"});
-		  $("#buttonGroup").animate({"opacity":"0"},200);
-		  $("#workoutContent").css("position","absolute");
-		  $(".exName").animate({"opacity":"0"},200);
-		  $(".icon-arrow-left").animate({"opacity":"1", "position":"absolute"},200);
-		});
 		
 	$("#back").click(function(){
 		$(".workoutHead").animate({"opacity":"1"},300);
@@ -319,7 +245,7 @@ function getExercise() {
   		    	  rcmndedWeight[workoutCount] = rcmndedWeight[compoundCount];
   		    	  rcmndedWeight[compoundCount] = "Just the Bar";
   	
-  		    	  $("#upperList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i><br><label>Recommended Weight:</label><label id="upperWeight'+i+'">'+rcmndedWeight[compoundCount]+'</label></li>');
+  		    	  $("#upperList").append('<li class="workoutCards" id="item'+i+'"><div class="workoutCardContainer"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><br><label class="recommendedLabel">Recommended Weight:</label><label class="recNum" id="upperWeight'+i+'">'+rcmndedWeight[compoundCount]+'</label><div></li>');
   		    	  compoundCount++;
 	    		}
 	    	  else if(type =="Dumbbell")
@@ -331,7 +257,7 @@ function getExercise() {
   		    			rcmndedWeight[workoutCount] = 25;
   		    		  }
   		    	  }
-  		    	  $("#upperList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i><br><label>Recommended Weight:</label><label id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></li>');
+  		    	  $("#upperList").append('<li class="workoutCards" id="item'+i+'"><div class="workoutCardContainer"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><br><label class="recommendedLabel">Recommended Weight:</label><label class="recNum" id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></div></li>');
   		    	  
 	    		}
 	    	  else if(type == "Body")
@@ -343,7 +269,7 @@ function getExercise() {
   		    			rcmndedWeight[workoutCount] = "Body Weight";
   		    		  }
   		    	  }
-  		    	  $("#upperList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i><br><label>Recommended Weight:</label><label id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></li>');
+  		    	  $("#upperList").append('<li class="workoutCards" id="item'+i+'"><div class="workoutCardContainer"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><br><label class="recommendedLabel">Recommended Weight:</label><label class="recNum" id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></div></li>');
   		    	  
 		  		}
 	    	  else if(type == "Machine")
@@ -355,7 +281,7 @@ function getExercise() {
 		    			  rcmndedWeight[workoutCount] = 50;
 		    		  }
 		    	  }
-  		    	  $("#upperList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i><br><label>Recommended Weight:</label><label id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></li>');
+  		    	  $("#upperList").append('<li class="workoutCards" id="item'+i+'"><div class="workoutCardContainer"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><br><label class="recommendedLabel">Recommended Weight:</label><label class="recNum" id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></div></li>');
 		  		}    
 		  		workoutCount++;
 
@@ -377,7 +303,7 @@ function getExercise() {
 	  		    	  }
 		  		   	  rcmndedWeight[workoutCount] = rcmndedWeight[compoundCount];
 	  		    	  rcmndedWeight[compoundCount] = "Just the Bar";
-	  		    	  $("#lowerList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i><br><label>Recommended Weight:</label><label id="upperWeight'+i+'">'+rcmndedWeight[compoundCount]+'</label></li>');
+	  		    	  $("#lowerList").append('<li class="workoutCards" id="item'+i+'"><div class="workoutCardContainer"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><br><label class="recommendedLabel">Recommended Weight:</label><label class="recNum" id="upperWeight'+i+'">'+rcmndedWeight[compoundCount]+'</label></div></li>');
 	  		    	  compoundCount++;
 		    		}
 		    	  else if(type =="Dumbbell")
@@ -389,7 +315,7 @@ function getExercise() {
 	  		    			rcmndedWeight[workoutCount] = 25;
 	  		    		  }
 	  		    	  }
-	  		    	  $("#lowerList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i><br><label>Recommended Weight:</label><label id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></li>');
+	  		    	  $("#lowerList").append('<li class="workoutCards" id="item'+i+'"><div class="workoutCardContainer"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><br><label class="recommendedLabel">Recommended Weight:</label><label class="recNum" id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></div></li>');
 
 		    		}
 		    	  else if(type == "Body")
@@ -401,7 +327,7 @@ function getExercise() {
 	  		    			rcmndedWeight[workoutCount] = "Body Weight";
 	  		    		  }
 	  		    	  }
-	  		    	  $("#lowerList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i><br><label>Recommended Weight:</label><label id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></li>');
+	  		    	  $("#lowerList").append('<li class="workoutCards" id="item'+i+'"><div class="workoutCardContainer"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><br><label class="recommendedLabel">Recommended Weight:</label><label class="recNum" id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></div></li>');
 
 			  		}
 		    	  else if(type == "Machine")
@@ -413,7 +339,7 @@ function getExercise() {
 			    			  rcmndedWeight[workoutCount] = 50;
 			    		  }
 			    	  }
-					  $("#lowerList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i><br><label>Recommended Weight:</label><label id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></li>');
+					  $("#lowerList").append('<li class="workoutCards" id="item'+i+'"><div class="workoutCardContainer"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><br><label class="recommendedLabel">Recommended Weight:</label><label class="recNum" id="upperWeight'+i+'">'+rcmndedWeight[i]+'</label></div></li>');
 
 			  		}    
 			  		workoutCount++;
@@ -427,7 +353,7 @@ function getExercise() {
 		    			  //rcmndedWeight[workoutCount] = "Body Weight";
 		  	    	  }
 
-		  		$("#coreList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i><br><label>Recommended Weight:</label><label id="upperWeight'+i+'">'+coreWeight[coreCount]+'</label></li>');
+		  		$("#coreList").append('<li class="workoutCards" id="item'+i+'"><div class="workoutCardContainer"><label id="exLbl'+i+'" class="exName">'+name.toUpperCase()+'</label><br><label class="recommendedLabel">Recommended Weight:</label><label class="recNum" id="upperWeight'+i+'">'+coreWeight[coreCount]+'</label></div></li>');
 		  		coreCount++;
 		  		workoutCount++;
 
@@ -440,7 +366,32 @@ function getExercise() {
 	    	rcmndedWeight.push(coreWeight[index]);
 	    }
 	   
+	    $(".workoutCards").click(function(){
+	    	currentDetailID = $(this).attr('id'); 
 
+	    	$("#" + currentDetailID).animate({height:"1500px"});
+	    	$(".exName").animate({"opacity":"0"});
+	    	$(".recommendedLabel").animate({"opacity":"0"});
+	    	$(".recNum").animate({"opacity":"0"});
+	    	$(".workoutList").animate({"margin-top":"62px"});
+	    	$(".workoutCards").animate({"border-bottom-width": "0px"});
+			$("#buttonGroup").animate({"opacity":"0"},200);
+	    	//$(".workoutHead").hide();
+	    	$(".exitDetail").animate({"opacity":"1"});
+	    });
+	    $(".exitDetail").click(function(){
+	    	$("#" + currentDetailID).animate({height:"120px"});
+	    	$(".workoutCards").animate({"border-bottom-width": "1px"},0);
+	    	$(".exName").animate({"opacity":"1"});
+	    	$(".recommendedLabel").animate({"opacity":"1"});
+	    	$(".recNum").animate({"opacity":"1"});
+	    	$(".workoutList").animate({"margin-top":"205px"});
+			$("#buttonGroup").animate({"opacity":"1"},200);
+	    	//$(".workoutHead").show();
+	    	$(".exitDetail").animate({"opacity":"0"});
+
+	    });
+	    
 	  },
 	  error: function(error) {
 	    alert("Error: " + error.code + " " + error.message);
@@ -463,15 +414,15 @@ function getExercise() {
 	    	{
 	    		if(data.exercise[i].ex_bodyZone == "upper")
 	    		{
-	    			$("#upperList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+data.exercise[i].ex_name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i></li>');
+	    			$("#upperList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+data.exercise[i].ex_name.toUpperCase()+'</label></li>');
 	    		}
 	    		else if(data.exercise[i].ex_bodyZone == "lower")
 	    		{
-	    			$("#lowerList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+data.exercise[i].ex_name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i></li>');
+	    			$("#lowerList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+data.exercise[i].ex_name.toUpperCase()+'</label></li>');
 	    		}
 	    		else
 	    		{
-	    			$("#coreList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+data.exercise[i].ex_name.toUpperCase()+'</label><i id="view'+i+'" class="icon-plus icon-3"></i></li>');
+	    			$("#coreList").append('<li class="workoutCards"><label id="exLbl'+i+'" class="exName">'+data.exercise[i].ex_name.toUpperCase()+'</label></li>');
 	    		}
 	    	}
 		      
@@ -568,6 +519,9 @@ $("#myProfile").click(function(){
 	window.location = "profile.html"; 
 });
 
+
+
+
 //------------------------------------------------------------//
 //----------- Workout start------------------------------------//
 //------------------------------------------------------------//
@@ -576,10 +530,6 @@ $("#startButton").click(function(){
 	if(timerSwitch == "on") 
 		{
 		startCounter++;
-		/*for(var i = 0; i<nameList.length; i++)
-		{
-				
-		}*/
 
 
 		$(".timer").css("display","none");
@@ -587,7 +537,7 @@ $("#startButton").click(function(){
 		$("#weightPerformed").css("display","block");
 		$("#set").text("Set ");
 		$("#setNum").text(setCount + " of 3");
-    	$("#timeLabel").text(" Seconds");
+    	//$("#timeLabel").text(" Seconds");
     	
 		
 		
@@ -620,7 +570,7 @@ $("#startButton").click(function(){
 				 // if it does not exist create it 
 				if (results.length == 0)
 				{
-					
+					alert("0 exist in database");
 					var Weight = Parse.Object.extend("Weight");	
 					var weight = new Weight();
 					
@@ -641,9 +591,12 @@ $("#startButton").click(function(){
 				}
 				else //if it exists store the ID.
 				{
-					weight.set("wght_recommended", weightNum);
-
-					weightId=results[0].id;
+					alert(weightNum);
+					weight.set("wght_recommended", parseInt(weightNum));
+					
+					weight.save().then(function(weight) {
+					weightId=weight[0].id;
+					});
 
 				}
 			  },
@@ -693,26 +646,36 @@ $("#startButton").click(function(){
 					var query = new Parse.Query(Weight);
 					query.get(weightId, {
 					  success: function(weight) {
+						  var increase = weightPerformed+5;
+						  var decrease = weightPerformed-5;
+						  
 						  if($("#tooLight").is(':checked'))
 							{
 								$("#weightAdjForm").css("display","none");
 								$(".overlay").css("display", "none");
-								 weight.set("wght_recommended", (weightPerformed+5));
-								 weight.save();
+								 weight.set("wght_recommended", increase);
+								 weight.save().then(function(){
+								 alert("New recommended Weight!");
+								 });
 							}
 							else if($("#tooHeavy").is(':checked'))
 							{
 								$("#weightAdjForm").css("display","none");
 								$(".overlay").css("display", "none");
-								 weight.set("wght_recommended", (weightPerformed-5));
-								 weight.save();
+								 weight.set("wght_recommended", decrease);
+								 weight.save().then(function(){
+								 alert("New recommended Weight!");
+								 });
 							}
 							else if($("#Perfect").is(':checked'))
 							{
 								$("#weightAdjForm").css("display","none");
 								$(".overlay").css("display", "none");
-								 weight.set("wght_recommended", (weightPerformed));
-								 weight.save();
+								 weight.set("wght_recommended", weightPerformed);
+								 
+								 weight.save().then(function(){
+								 alert("New recommended Weight!");
+								 });
 							}
 							else
 							{
@@ -733,10 +696,7 @@ $("#startButton").click(function(){
 				setCount=1;
 				$("#workoutOverviewTitle").text(nameList[nameCount]);
 				$("#rcmendWeight").text(rcmndedWeight[nameCount]);
-				
-				
-				alert(nameCount);
-				alert(rcmndedWeight[nameCount]);
+			
 
 				if(nameList[nameCount] == undefined)
 				{

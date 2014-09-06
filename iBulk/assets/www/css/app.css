@@ -5,6 +5,23 @@ html {
     background-color:#0091ea;   
     color: #000;
 }
+.settingMenu
+{
+	background-color: white;
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	left: 227px;
+	top: 33px;
+	z-index: 1050;
+	
+}
+.settingMenuDots
+{
+	left: 325px !important;
+	position: absolute;
+	top: 21px;
+}
 #workoutBody
 {
 	position: fixed;
@@ -136,14 +153,12 @@ ui-loader
 .workoutHead
 {
 	width: 100%;
-	height: 9%;
+	height: 64px;
 	background-color: #0091ea;
-	position: absolute;
+	position: fixed;
 	margin-top: -156px;
 	z-index: 1000;
-	/* position: fixed; */
-	box-shadow: 0 0 0px 0;
-	line-height: -3px;
+
 	
 }
 #menuIcon{
@@ -174,23 +189,28 @@ ui-loader
 
 #menuScreen {
 	z-index: 1041;
-	top: 709px;
+	top: 695px;
 	width: 500px;
 	height: 637px;
 	background-color: white;
 	position: absolute;
-
+	box-shadow: 0px 5px 15px 0px;
 }
 
 #start{
 	z-index: 1041;
 	left: 366px;
 	width: 500px;
-	height: 637px;
+	height: 83%;
 	background-color: white;
 	position: absolute;
 	top:109px; 
 
+}
+#startButton
+{
+	position: fixed;
+	bottom: 3px;
 }
 
 #iconContainer {
@@ -204,13 +224,17 @@ ui-loader
 
 .proMenu
 {
-	box-shadow:0 1px 2px rgba(0, 0, 0, 0.25);
-	height:100px;
-	width:100px;
-	z-index:1100;
-	float:left;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	height: 60px;
+	width: 60px;
+	z-index: 1100;
+	float: left;
 	margin: 20px;
-	border-radius: 2px;
+	border-radius: 100%;
+	text-align: center;
+	line-height: 59px;
+	margin-top: -66px;
+	font-size: 10px;
 }
 
 #workoutOverviewTitle
@@ -359,6 +383,19 @@ ui-loader
 	
 
 }
+.workoutCardContainer
+{
+	width:100%;
+	height:100%;
+}
+.exitDetail
+{
+	z-index: 1001;
+	position: absolute;
+	bottom: 33px;
+	opacity:0;
+}
+
 .exName
 {
 	
@@ -1005,6 +1042,13 @@ input.switch:empty ~ label:after
   background-color: #0f9d58;
   border-color: #0f9d58;
 }
+#weightPerformed
+{
+	display: none;
+	margin-left: -53px;
+	position: fixed;
+	bottom: 63px;
+}
 #completeMessage
 {
 	display: none;
@@ -1041,4 +1085,58 @@ input.switch:empty ~ label:after
 	display:none;
 }
 
+/**********************************/
+/**** Profile Css *****************/
+/**********************************/
+#proBody
+{
+    overflow: hidden;
+}
+#profileImageContainer
+{
+	width: 105%;
+    height: 200px;
+    z-index: 1001;
+    background-color: grey;
+    margin: -8px;
+}
+#profileBody
+{
+	background-color: white;
+	width: 100%;
+	height: 70%;
+	margin: 0px -8px;
+	position: absolute;
+	overflow:scroll;
+}
+#profileTabsContainer
+{
+	background-color: #0091ea;
+    width: 100%;
+    height: 41px;
+}
 
+.tabList
+{
+	list-style: none;
+    margin-top: -16px;
+    margin-left: -40px;
+}
+.profileTab
+{
+	float: left;
+	height: 41px;
+	width: 120px;
+	text-align: center;
+	line-height: 42px;
+
+}
+
+#profileTabSelect
+{
+	background-color: white;
+}
+#progressTabSelect
+{
+	background-color: #0091ea;	
+}
